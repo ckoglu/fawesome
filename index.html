@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Awesome Icons</title>
+<link rel="preload" href="./style.css" as="style">
+<link rel="stylesheet" href="./style.css"/>
+<link rel="stylesheet" href="./font-awesome.css">
+</head>
+<body>
+
+<!-- theme init: avoids flash -->
+<script>
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+</script>
+
+<header>
+  <div class="border-top">
+    <div class="main-title">
+      <h1><i class="fa fa-flag"></i>&nbsp; Font Awesome</h1>
+      <p>çift tıkla kopyala</p>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <span class="num" id="visibleCount">605</span>
+        <span class="lbl">görüntülenen</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">605</span>
+        <span class="lbl">toplam</span>
+      </div>
+      <button id="themeBtn" class="data-btn" title="Tema değiştir">
+        <i class="fa fa-moon-o" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- sticky search bar -->
+  <div class="section-title-container">
+    <div class="section-title-top">
+
+      <div class="section-buttons">
+        <div class="input-wrapper">
+          <i class="fa fa-search"></i>
+          <input
+            type="text"
+            id="searchInput"
+            class="url-input with-icon"
+            placeholder="icon ara... (örn: arrow, home, user)"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- grid -->
+  <div class="grid-section">
+    <div id="iconGrid"></div>
+  </div>
+</main>
+
+<!-- alert box -->
+<div id="alertBox"></div>
+
+<script src="./script.js"></script>
+</body>
+</html>
