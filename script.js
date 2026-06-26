@@ -74,22 +74,22 @@ function createCard(name) {
   label.className = 'icon-name';
   label.textContent = `fa fa-${name}`;
 
-  // Unicode kodunu gösteren yeni span
+  // Unicode kodunu \f106 formatında göster
   const unicode = document.createElement('span');
   unicode.className = 'icon-unicode';
   const hexCode = ICON_MAP[name];
-  unicode.textContent = `U+${hexCode.toUpperCase()}`;
+  unicode.textContent = `\\${hexCode}`; // \f106 formatı
 
   card.appendChild(ico);
   card.appendChild(label);
-  card.appendChild(unicode); // Unicode'u ekle
+  card.appendChild(unicode);
 
-  // Çift tıklamada artık Unicode kodunu da kopyalayabilirsin
+  // Çift tıklamada sadece \f106 kodunu kopyalamak için
   card.addEventListener('dblclick', () => {
-    const cls = `fa fa-${name}`;
-    copyText(cls).then(() => {
+    const code = `\\${ICON_MAP[name]}`; // Kopyalanacak format
+    copyText(code).then(() => {
       card.classList.add('copied');
-      showAlert(`${cls}`,"copy");
+      showAlert(`${code}`, "copy");
       setTimeout(() => card.classList.remove('copied'), 1000);
     });
   });
