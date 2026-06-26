@@ -74,9 +74,17 @@ function createCard(name) {
   label.className = 'icon-name';
   label.textContent = `fa fa-${name}`;
 
+  // Unicode kodunu gösteren yeni span
+  const unicode = document.createElement('span');
+  unicode.className = 'icon-unicode';
+  const hexCode = ICON_MAP[name];
+  unicode.textContent = `U+${hexCode.toUpperCase()}`;
+
   card.appendChild(ico);
   card.appendChild(label);
+  card.appendChild(unicode); // Unicode'u ekle
 
+  // Çift tıklamada artık Unicode kodunu da kopyalayabilirsin
   card.addEventListener('dblclick', () => {
     const cls = `fa fa-${name}`;
     copyText(cls).then(() => {
